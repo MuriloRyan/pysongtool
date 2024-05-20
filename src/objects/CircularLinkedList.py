@@ -30,6 +30,19 @@ class CircularLinkedList:
             current_node.next = new_node
             new_node.next = self.root
     
+    def find_one(self, data):
+        current_node = self.root
+        index = 0
+
+        while current_node.data != data:
+            current_node = current_node.next
+            index += 1
+
+            if current_node.next == self.root:
+                return 'error, not in list'
+
+        return [current_node, index]
+    
     def __getitem__(self, steps):
         current_node = self.root
         i = 0
