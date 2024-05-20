@@ -38,8 +38,8 @@ class CircularLinkedList:
             current_node = current_node.next
             index += 1
 
-            if current_node.next == self.root:
-                return 'error, not in list'
+            if current_node == self.root:
+                raise StopIteration
 
         return [current_node, index]
     
