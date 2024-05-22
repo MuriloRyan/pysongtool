@@ -6,7 +6,7 @@ from objects.chords import chord_list
 from exceptions.UnknownChord import UnknownChord
 from exceptions.WrongNote import WrongNote
 
-class NoteList:
+class PySongTool:
     def __init__(self, circular_linked_list_object=CircularLinkedList):
         self.list = circular_linked_list_object()
         self.chords = chord_list
@@ -49,8 +49,10 @@ class NoteList:
             #find a note using: root index + chord note interval (in semitones)
             notes.append(self.list[root_info[1] + i].data)
 
-        return notes
-    
+        return {
+            'notes': notes
+        }
+
     def scale(self, root_note: str, scale_name: str):
         root_note = root_note.upper()
         notes = []
@@ -84,10 +86,10 @@ class NoteList:
 
             chords.append(f'{_current_note}{_current_chord}')
 
-        return [notes, chords]
+        return {
+            'notes': notes,
+            'chords': chords
+        }
 
-if __name__ == '__main__':
 
-    nt = NoteList()
-
-    print(nt.scale('a', 'min'))
+    
