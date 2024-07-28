@@ -1,10 +1,10 @@
-from objects.CircularLinkedList import CircularLinkedList
+from src.objects.CircularLinkedList import CircularLinkedList
 
-from objects.scales import scales_list
-from objects.chords import chord_list
+from src.objects.scales import scales_list
+from src.objects.chords import chord_list
 
-from exceptions.UnknownChord import UnknownChord
-from exceptions.WrongNote import WrongNote
+from src.exceptions.UnknownChord import UnknownChord
+from src.exceptions.WrongNote import WrongNote
 
 class PySongTool:
     def __init__(self, circular_linked_list_object=CircularLinkedList):
@@ -90,6 +90,4 @@ class PySongTool:
             'notes': notes,
             'chords': chords
         }
-
-
     
