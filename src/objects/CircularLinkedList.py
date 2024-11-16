@@ -1,4 +1,4 @@
-from os import urandom
+#Used for the list of notes
 
 class Node:
     def __init__(self, data, bits=16):
@@ -54,7 +54,6 @@ class CircularLinkedList:
             i += 1
 
         return node
-
     
     def __iter__(self):
         self._iter_current_node = self.root
