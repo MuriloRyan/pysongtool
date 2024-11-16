@@ -5,9 +5,11 @@ from src.objects.chords import chord_list
 
 from src.exceptions.UnknownChord import UnknownChord
 from src.exceptions.WrongNote import WrongNote
+from src.exceptions.UnknownScale import WrongScale
 
 class PySongTool:
     def __init__(self, circular_linked_list_object=CircularLinkedList):
+        
         self.list = circular_linked_list_object()
         self.chords = chord_list
 
@@ -65,7 +67,7 @@ class PySongTool:
             _chords = scale_info['chords']
             
         except:
-            raise UnknownScale(root_note, scale_name)
+            raise WrongScale(root_note, scale_name)
         
         try:
             root_info: dict = self.list.find_one(root_note)
