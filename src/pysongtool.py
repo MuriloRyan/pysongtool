@@ -104,13 +104,45 @@ class PySongTool:
         except:
             raise WrongNote(root_note)
         
+        root = root_info[1]
+
         n = 0
         for i in intervals_list:
             _current_interval = i
+            _semitones = _current_interval['semitones']
 
-            _current_interval['note'] = self.list[root_info[1] + n].data
+
+            _current_interval['note'] = self.list[root + _semitones].data
 
             notes.append(_current_interval)
             n += 1
 
         return notes
+    
+    def get_interval(self, root_note, *args):
+        root_note = root_note.upper()
+
+        try:
+            root_info: dict = self.list.find_one(root_note)
+        except:
+            raise WrongNote(root_note)
+        
+        note_and_intervals = []
+
+        for i in range(len(args)):
+            try:
+                _current_note = args[i].upper()
+                note: dict = self.list.find_one(_current_note)
+            except:
+                raise WrongNote(args[i])
+
+            d = abs(0 - note[1])
+
+            note_and_intervals.append(
+                {
+                    'note': _current_note,
+                    'interval': intervals_list[d]
+                }
+            )
+
+        return note_and_intervals
