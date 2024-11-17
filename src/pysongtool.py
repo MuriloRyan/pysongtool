@@ -2,6 +2,7 @@ from src.objects.CircularLinkedList import CircularLinkedList
 
 from src.objects.scales import scales_list
 from src.objects.chords import chord_list
+from src.objects.intervals import intervals_list
 
 from src.exceptions.UnknownChord import UnknownChord
 from src.exceptions.WrongNote import WrongNote
@@ -52,6 +53,7 @@ class PySongTool:
             notes.append(self.list[root_info[1] + i].data)
 
         return {
+            'chord': f'{root_note}{chord_name}',
             'notes': notes
         }
 
@@ -93,3 +95,22 @@ class PySongTool:
             'chords': chords
         }
     
+    def intervals(self, root_note: str):
+        root_note = root_note.upper()
+        notes = []
+
+        try:
+            root_info: dict = self.list.find_one(root_note)
+        except:
+            raise WrongNote(root_note)
+        
+        n = 0
+        for i in intervals_list:
+            _current_interval = i
+
+            _current_interval['note'] = self.list[root_info[1] + n].data
+
+            notes.append(_current_interval)
+            n += 1
+
+        return notes
