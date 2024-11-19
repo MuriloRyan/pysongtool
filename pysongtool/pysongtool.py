@@ -1,12 +1,12 @@
-from src.objects.CircularLinkedList import CircularLinkedList
+from pysongtool.objects.CircularLinkedList import CircularLinkedList
 
-from src.objects.scales import scales_list
-from src.objects.chords import chord_list
-from src.objects.intervals import intervals_list
+from pysongtool.objects.scales import scales_list
+from pysongtool.objects.chords import chord_list
+from pysongtool.objects.intervals import intervals_list
 
-from src.exceptions.UnknownChord import UnknownChord
-from src.exceptions.WrongNote import WrongNote
-from src.exceptions.UnknownScale import WrongScale
+from pysongtool.exceptions.UnknownChord import UnknownChord
+from pysongtool.exceptions.WrongNote import WrongNote
+from pysongtool.exceptions.UnknownScale import WrongScale
 
 class PySongTool:
     def __init__(self, circular_linked_list_object=CircularLinkedList):
