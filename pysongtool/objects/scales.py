@@ -68,12 +68,12 @@ scales_list = {
 
     'pentatonic_maj': {
         "notes": [2, 4, 7, 9],
-        "chords": ['maj', 'maj', 'min', 'dim', 'maj', 'min', 'min']
+        "chords": ['','','','','','',]
     },
 
     'pentatonic_min': {
         "notes": [3, 5, 7, 10],
-        "chords": ['min', 'min', 'maj', 'maj', 'min', 'dim', 'maj']
+        "chords": ['','','','','',]
     },
 
     'blues': {
