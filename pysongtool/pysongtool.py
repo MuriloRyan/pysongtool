@@ -9,6 +9,8 @@ from pysongtool.exceptions.WrongNote import WrongNote
 from pysongtool.exceptions.UnknownScale import WrongScale
 
 class PySongTool:
+    """ This is the facade class who give easy acess for all pysongtool features."""
+
     def __init__(self, circular_linked_list_object=CircularLinkedList):
         
         self.list = circular_linked_list_object()
@@ -26,6 +28,10 @@ class PySongTool:
         self.list.append('A')
         self.list.append('A#')
         self.list.append('B')
+
+        self.scales_list = scales_list
+        self.chords_list = chord_list
+        self.intervals_list = intervals_list
     
     def chord(self, root_note: str,chord_name: str):
         """ Use it if you want to get a chord using root_note as key"""

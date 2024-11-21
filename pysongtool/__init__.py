@@ -1,1 +1,1 @@
-from .pysongtool import PySongTool
+from .pysongtool import PySongTool, UnknownChord, WrongNote, WrongScale
