@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
     name="pysongtool",
-    version="0.10",
+    version="0.10.5",
     author="Murilo R.B Silva",
     description="A Python library that gives musical theory contend.",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/MuriloRyan/pysongtool",  # Substitua com o link do seu repositório
-    packages=['pysongtool'],
+    packages=find_packages(),
     install_requires=[
         "iniconfig==2.0.0",
         "packaging==24.2",
