@@ -28,7 +28,7 @@ def test_all_chords(pysongtool_instance):
     assert 'maj' in result[0]
 
 def test_scale_valid(pysongtool_instance):
-    result = pysongtool_instance.scale('C', 'maj')
+    result = pysongtool_instance.scale('C', 'major')
     expected_notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
     assert result['notes'] == expected_notes
 
@@ -38,7 +38,7 @@ def test_scale_invalid_scale(pysongtool_instance):
 
 def test_scale_invalid_note(pysongtool_instance):
     with pytest.raises(WrongNote):
-        pysongtool_instance.scale('H', 'maj')
+        pysongtool_instance.scale('H', 'major')
 
 def test_intervals(pysongtool_instance):
     result = pysongtool_instance.intervals('C')
