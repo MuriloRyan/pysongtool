@@ -50,10 +50,10 @@ def test_intervals_invalid_note(pysongtool_instance):
         pysongtool_instance.intervals('H')
 
 def test_get_interval(pysongtool_instance):
-    result = pysongtool_instance.get_interval('C', 'E', 'G')
+    result = pysongtool_instance.get_intervals('C', 'E', 'G')
     assert result[0]['note'] == 'E'
     assert result[0]['interval']['semitones'] == 4
 
 def test_get_interval_invalid_note(pysongtool_instance):
     with pytest.raises(WrongNote):
-        pysongtool_instance.get_interval('C', 'H')
+        pysongtool_instance.get_intervals('C', 'H')

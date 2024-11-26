@@ -152,7 +152,7 @@ class PySongTool:
 
         return notes
     
-    def get_interval(self, root_note, *args):
+    def get_intervals(self, root_note, *args):
         root_note = root_note.upper()
 
         try:
