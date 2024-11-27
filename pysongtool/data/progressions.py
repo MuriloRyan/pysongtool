@@ -4,8 +4,9 @@ progression_list = [
         'degress_halftones': [],
         'scale': 'major',
         'examples': {
-            'name': 'Let it Be',
-            'artist': 'The Beatles'
+            'The Beatles': [
+                'Let it Be'
+            ]
         }
     },
 
@@ -14,8 +15,9 @@ progression_list = [
         'degress_halftones': [],
         'scale': 'minor',
         'examples': {
-            'name': 'Stairway to Heaven',
-            'artist': 'Led Zeppelin'
+            'Led Zeppelin': [
+                'Stairway to Heaven'
+            ]
         }
     }
 ]
