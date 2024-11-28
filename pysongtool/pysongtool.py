@@ -1,8 +1,10 @@
 from pysongtool.objects.CircularLinkedList import CircularLinkedList
 
-from pysongtool.objects.scales import scales_list
-from pysongtool.objects.chords import chord_list
-from pysongtool.objects.intervals import intervals_list
+from pysongtool.data.scales import scales_list
+from pysongtool.data.chords import chord_list
+from pysongtool.data.intervals import intervals_list
+from pysongtool.data.fifths import fifths
+from pysongtool.data.progressions import progression_list
 
 from pysongtool.exceptions.UnknownChord import UnknownChord
 from pysongtool.exceptions.WrongNote import WrongNote
@@ -32,6 +34,7 @@ class PySongTool:
         self.scales_list = scales_list
         self.chords_list = chord_list
         self.intervals_list = intervals_list
+        self.fifths_list = fifths
     
     def chord(self, root_note: str,chord_name: str):
         """ Use it if you want to get a chord using root_note as key"""
@@ -152,7 +155,7 @@ class PySongTool:
 
         return notes
     
-    def get_interval(self, root_note, *args):
+    def get_intervals(self, root_note, *args):
         root_note = root_note.upper()
 
         try:
@@ -179,3 +182,9 @@ class PySongTool:
             )
 
         return note_and_intervals
+
+    def get_fifths(self):
+        return self.fifths_list
+    
+    def all_progressions(self):
+        return progression_list
