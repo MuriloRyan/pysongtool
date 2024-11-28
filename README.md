@@ -52,7 +52,7 @@ tool = PySongTool()
 ```
 ### Generating a Chord
 ```python
-result = tool.chord('C', 'maj')
+result = tool.chord('C', 'major')
 print(result)
 # {'chord': 'Cmaj', 'notes': ['C', 'E', 'G']}
 ```
@@ -87,22 +87,7 @@ print(intervals)
 
 ## 🛠 **Contributing**
 
-Contributions are welcome! To collaborate:  
-
-1. Fork the repository.
-2. Create a branch for your feature/bugfix:  
-   ```bash
-   git checkout -b my-feature
-   ```
-3. Commit your changes:  
-   ```bash
-   git commit -m "Description of my feature"
-   ```
-4. Push to your fork:  
-   ```bash
-   git push origin my-feature
-   ```
-5. Open a **Pull Request** in the main repository.
+Contributions are welcome!
 
 ---
 
