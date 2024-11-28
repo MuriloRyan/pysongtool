@@ -4,6 +4,7 @@ from pysongtool.data.scales import scales_list
 from pysongtool.data.chords import chord_list
 from pysongtool.data.intervals import intervals_list
 from pysongtool.data.fifths import fifths
+from pysongtool.data.progressions import progression_list
 
 from pysongtool.exceptions.UnknownChord import UnknownChord
 from pysongtool.exceptions.WrongNote import WrongNote
@@ -184,3 +185,6 @@ class PySongTool:
 
     def get_fifths(self):
         return self.fifths_list
+    
+    def all_progressions(self):
+        return progression_list
