@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pysongtool",
-    version="0.11.0",
+    version=open('version.txt', 'r', encoding='utf-8').read(),
     author="Murilo R.B Silva",
     description="A Python library that gives musical theory contend.",
     long_description=open("README.md", "r", encoding="utf-8").read(),
