@@ -3,10 +3,10 @@ name: Test with multiple Python versions
 on:
   push:
     branches:
-      - '**'
+      - '**'  # Triggers on push to any branch
   pull_request:
     branches:
-      - '**'
+      - '**'  # Triggers on pull request to any branch
 
 jobs:
   test:
@@ -33,8 +33,3 @@ jobs:
     - name: Run tests
       run: |
         pytest
-
-    - name: Notify on failure
-      if: failure()
-      run: |
-        echo "The workflow failed. Please check the logs for details."
