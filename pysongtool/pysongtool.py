@@ -68,7 +68,8 @@ class PySongTool:
             'notes': notes
         }
     
-    def all_chords(self, root_note: str):
+    def all_chords(self, root_note: str, inline=False):
+        """ Use it if you want to get all chords using root_note as key"""
         try:
             root_note = root_note.upper()
             root_info: dict = self.list.find_one(root_note)
@@ -87,7 +88,19 @@ class PySongTool:
                 }
             )
 
-        return all_chords
+        if inline:
+            return self._inline(all_chords)
+        else:
+            return all_chords
+
+    #maybe this inst the best way to do it
+    def _inline(self, list_to_use: list) -> str:
+        inline_chords = ''
+
+        for c in list_to_use:
+            inline_chords += f'{c}\n'
+
+        return inline_chords
 
     def scale(self, root_note: str, scale_name: str):
         """ Use it if you want to get an musical scale with root_note as a key"""
