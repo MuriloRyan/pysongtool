@@ -1,7 +1,7 @@
 # PySongTool
 
 ### 🎵 **Music Theory with Python**
-**Version**: beta 0.10
+**Version**: beta 0.12.5
 
 PySongTool is a Python library designed to help provide information involving music theory
 
