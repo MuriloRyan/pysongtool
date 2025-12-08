@@ -186,5 +186,22 @@ class PySongTool:
     def get_fifths(self):
         return self.fifths_list
     
-    def all_progressions(self):
-        return progression_list
+    def all_progressions(self, root_note: str):
+        progression_got = []
+        note = root_note.upper()
+
+        for p in progression_list:
+            p['notes'] = []
+            i = 0
+
+            for degree in p['degress_halftones']:
+                note = self.list[degree].data
+                got_info = [self.chord(note, p['kind_of_chord'][i])['chord'],
+                            self.chord(note, p['kind_of_chord'][i])['notes']]
+                
+                p['notes'] += got_info
+                i += 1
+
+            progression_got.append(p)
+
+        return progression_got
