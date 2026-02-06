@@ -1,7 +1,7 @@
 #Used for the list of notes
 
 class Node:
-    def __init__(self, data, bits=16):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
@@ -41,7 +41,7 @@ class CircularLinkedList:
             if current_node == self.root:
                 raise StopIteration
 
-        return [current_node, index]
+        return {'current_node': current_node, 'index': index}
     
     def __getitem__(self, steps):
         current_node = self.root

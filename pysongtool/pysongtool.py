@@ -1,3 +1,5 @@
+from sys import exception
+from pysongtool.data import progressions
 from pysongtool.objects.CircularLinkedList import CircularLinkedList
 
 from pysongtool.data.scales import scales_list
@@ -16,8 +18,7 @@ class PySongTool:
     def __init__(self, circular_linked_list_object=CircularLinkedList):
         
         self.list = circular_linked_list_object()
-        self.chords = chord_list
-
+        
         self.list.append('C')
         self.list.append('C#')
         self.list.append('D')
@@ -31,10 +32,12 @@ class PySongTool:
         self.list.append('A#')
         self.list.append('B')
 
+        self.chords = chord_list
         self.scales_list = scales_list
         self.chords_list = chord_list
         self.intervals_list = intervals_list
         self.fifths_list = fifths
+        self.progression_list = progression_list
     
     def chord(self, root_note: str,chord_name: str):
         """ Use it if you want to get a chord using root_note as key"""
@@ -56,12 +59,12 @@ class PySongTool:
             raise WrongNote(root_note)
 
         #get the symbol
-        notes.append(root_info[0].data)
+        notes.append(root_info['current_node'].data)
 
         for i in intervals:
 
             #find a note using: root index + chord note interval (in semitones)
-            notes.append(self.list[root_info[1] + i].data)
+            notes.append(self.list[root_info['index'] + i].data)
 
         return {
             'chord': f'{root_note}{chord_name}',
@@ -116,7 +119,7 @@ class PySongTool:
         for i in intervals:
 
             #find a note using: root index + chord note interval (in semitones)
-            notes.append(self.list[root_info[1] + i].data)
+            notes.append(self.list[root_info['index'] + i].data)
 
         for i in range(len(notes)):
             _current_note = notes[i]
@@ -140,7 +143,7 @@ class PySongTool:
         except:
             raise WrongNote(root_note)
         
-        root = root_info[1]
+        root = root_info['index']
 
         n = 0
         for i in intervals_list:
@@ -186,22 +189,79 @@ class PySongTool:
     def get_fifths(self):
         return self.fifths_list
     
-    def all_progressions(self, root_note: str):
+    #def all_progressions(self, root_note: str):
+
+
+        """
+        Returns all chord progressions for the given root note.
+
+        Args:
+            root_note (str): The root note to use as the basis for progressions.
+
+        Returns:
+            list: A list of dictionaries, each representing a progression with its chords and notes.
+        """
         progression_got = []
-        note = root_note.upper()
 
-        for p in progression_list:
-            p['notes'] = []
-            i = 0
+        try:
+            root_info: dict = self.list.find_one(root_note)
+        except:
+            raise WrongNote(root_note)
 
-            for degree in p['degress_halftones']:
-                note = self.list[degree].data
-                got_info = [self.chord(note, p['kind_of_chord'][i])['chord'],
-                            self.chord(note, p['kind_of_chord'][i])['notes']]
+        note = root_info[0].data
+
+        for progression in progression_list:
+            degrees_repr = progression['degrees_repr']
+            kind_of_chord = progression['kind_of_chord']
+
+            chords = []
+            notes = []
+
+            for i in range(len(degrees_repr)):
+
+                chord_info = self.chord(note, progression['kind_of_chord'][i])
                 
-                p['notes'] += got_info
-                i += 1
+                chords.append(chord_info['chord'])
+                notes.append(chord_info['notes'])
 
-            progression_got.append(p)
+                _note_to_find = self.list[kind_of_chord[i]]
+
+                note = self.chord(_note_to_find, kind_of_chord[i])
+
+                progression_got.append(
+                    {
+                        'scale': progression['scale'],
+                        'degrees': degrees_repr,
+                        'chords': chords,
+                        'notes': notes,
+                        'examples': progression['examples']
+                    }
+                )
 
         return progression_got
+
+
+    def all_progressions(self, note: str):
+
+        try:
+            root_note = self.list.find_one(note.upper())
+
+        except:
+            raise WrongNote(note)
+
+        progressions_returned = []
+        for i in range(len(self.progression_list)):
+            _current_progression = self.progression_list[i]
+            _current_progression['chords'] = []
+
+            for chord_i in range(_current_progression['number_of_chords']):
+                _current_chord = self.list[root_note['index'] + _current_progression['degrees_halftones'][chord_i]]
+                _current_chord_name = _current_progression['kind_of_chord'][chord_i]
+
+                got_chord = self.chord(_current_chord.data, _current_chord_name)
+
+                _current_progression['chords'].append(got_chord)
+
+            progressions_returned.append(_current_progression)
+        
+        return progressions_returned
