@@ -188,58 +188,6 @@ class PySongTool:
 
     def get_fifths(self):
         return self.fifths_list
-    
-    #def all_progressions(self, root_note: str):
-
-
-        """
-        Returns all chord progressions for the given root note.
-
-        Args:
-            root_note (str): The root note to use as the basis for progressions.
-
-        Returns:
-            list: A list of dictionaries, each representing a progression with its chords and notes.
-        """
-        progression_got = []
-
-        try:
-            root_info: dict = self.list.find_one(root_note)
-        except:
-            raise WrongNote(root_note)
-
-        note = root_info[0].data
-
-        for progression in progression_list:
-            degrees_repr = progression['degrees_repr']
-            kind_of_chord = progression['kind_of_chord']
-
-            chords = []
-            notes = []
-
-            for i in range(len(degrees_repr)):
-
-                chord_info = self.chord(note, progression['kind_of_chord'][i])
-                
-                chords.append(chord_info['chord'])
-                notes.append(chord_info['notes'])
-
-                _note_to_find = self.list[kind_of_chord[i]]
-
-                note = self.chord(_note_to_find, kind_of_chord[i])
-
-                progression_got.append(
-                    {
-                        'scale': progression['scale'],
-                        'degrees': degrees_repr,
-                        'chords': chords,
-                        'notes': notes,
-                        'examples': progression['examples']
-                    }
-                )
-
-        return progression_got
-
 
     def all_progressions(self, note: str):
 
