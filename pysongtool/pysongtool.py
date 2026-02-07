@@ -114,7 +114,7 @@ class PySongTool:
             raise WrongNote(root_note)
 
         #get the symbol
-        notes.append(root_info[0].data)
+        notes.append(root_info['current_node'].data)
 
         for i in intervals:
 
@@ -175,7 +175,7 @@ class PySongTool:
             except:
                 raise WrongNote(args[i])
 
-            d = abs(0 - note[1])
+            d = abs(0 - note['index'])
 
             note_and_intervals.append(
                 {
