@@ -57,3 +57,29 @@ def test_get_interval(pysongtool_instance):
 def test_get_interval_invalid_note(pysongtool_instance):
     with pytest.raises(WrongNote):
         pysongtool_instance.get_intervals('C', 'H')
+
+
+def test_get_fifths(pysongtool_instance):
+    result = pysongtool_instance.get_fifths()
+    assert isinstance(result, list)
+    # basic sanity: C -> G should be present in fifths
+    assert {'note': 'C', 'fifth': 'G'} in result
+
+
+def test_all_progressions_valid(pysongtool_instance):
+    result = pysongtool_instance.all_progressions('C')
+    assert isinstance(result, list)
+    # There are two progressions defined in data/progressions.py
+    assert len(result) == 2
+
+    first = result[0]
+    assert 'chords' in first
+    assert isinstance(first['chords'], list)
+    # Each chord entry should have 'chord' and 'notes'
+    assert 'chord' in first['chords'][0]
+    assert 'notes' in first['chords'][0]
+
+
+def test_all_progressions_invalid_note(pysongtool_instance):
+    with pytest.raises(WrongNote):
+        pysongtool_instance.all_progressions('H')
