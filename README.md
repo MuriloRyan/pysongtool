@@ -15,7 +15,7 @@ the list of note is a LinkedList, which allows the list repeat itself, so we can
 
 ## 📚 **Requirements**
 
-- Python >= 3.7
+- Python >= 3.12
 
 ---
 
