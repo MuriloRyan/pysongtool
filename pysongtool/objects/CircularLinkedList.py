@@ -1,9 +1,10 @@
 #Used for the list of notes
+from typing import Any
 
 class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+    def __init__(self, data: Any):
+        self.data: Any | None = data
+        self.next: Node | None = None
 
     def __str__(self):
         return str(self.data)

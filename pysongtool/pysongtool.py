@@ -1,5 +1,3 @@
-from sys import exception
-from pysongtool.data import progressions
 from pysongtool.objects.CircularLinkedList import CircularLinkedList
 
 from pysongtool.data.scales import scales_list
