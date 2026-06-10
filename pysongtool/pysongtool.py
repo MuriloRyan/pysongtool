@@ -90,7 +90,7 @@ class PySongTool:
 
         return all_chords
 
-    def scale(self, root_note: str, scale_name: str):
+    def scale(self, root_note: str, scale_name: str, modes: bool = False, mode_degree: int = 0):
         """ Use it if you want to get an musical scale with root_note as a key"""
 
         root_note = root_note.upper()
@@ -102,6 +102,7 @@ class PySongTool:
 
             intervals = scale_info['notes']
             _chords = scale_info['chords']
+            _modes = scale_info['modes']
             
         except:
             raise WrongScale(root_note, scale_name)
@@ -125,11 +126,46 @@ class PySongTool:
 
             chords.append(f'{_current_note}{_current_chord}')
 
-        return {
-            'notes': notes,
-            'chords': chords
-        }
-    
+        if modes:
+            if mode_degree < 0:
+                return {
+                    'notes': notes,
+                    'chords': chords,
+                    'modes': _modes
+                }
+            
+            elif mode_degree > 0:
+                index = mode_degree - 1
+
+                return {
+                    'mode': _modes[mode_degree],
+                    'notes': notes[index:] + notes[:index],
+                    'chords': chords[index:] + chords[:index]
+                }
+
+        return {'notes': notes, 'chords': chords}
+
+    def all_scales(self, root_note: str):
+        try:
+            root_note = root_note.upper()
+            root_info: dict = self.list.find_one(root_note)
+        except:
+            raise WrongNote(root_note)
+
+        all_scales = []
+
+        i = 1
+        for c in scales_list:
+            _current_scale = self.scale(root_note, c, modes = True)
+
+            all_scales.append(
+                {
+                    f'{c}': _current_scale
+                }
+            )
+
+        return all_scales
+
     def intervals(self, root_note: str):
         """ Use it if you want to get a dict containing all intervals with root_note as reference"""
 

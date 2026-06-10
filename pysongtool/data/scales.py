@@ -1,80 +1,137 @@
-# {name: [notes (semitones)]}
-
 scales_list = {
-    
-    #Major Scales
-
     'major': {
-        "notes": [2, 4, 5, 7, 9, 11],
-        "chords": ['maj', 'min', 'min', 'maj', 'maj', 'min', 'dim']
+        'notes': [2, 4, 5, 7, 9, 11],
+        'chords': ['maj', 'min', 'min', 'maj', 'maj', 'min', 'dim'],
+
+        'modes': {
+            1: {
+                'name': 'Ionian',
+                'aliases': ['Major']
+            },
+
+            2: {
+                'name': 'Dorian',
+                'aliases': []
+            },
+
+            3: {
+                'name': 'Phrygian',
+                'aliases': []
+            },
+
+            4: {
+                'name': 'Lydian',
+                'aliases': []
+            },
+
+            5: {
+                'name': 'Mixolydian',
+                'aliases': []
+            },
+
+            6: {
+                'name': 'Aeolian',
+                'aliases': ['Natural Minor', 'Minor']
+            },
+
+            7: {
+                'name': 'Locrian',
+                'aliases': []
+            }
+        }
     },
 
     'minor': {
-        "notes": [2, 3, 5, 7, 8, 10],
-        "chords": ['min', 'dim', 'maj', 'min', 'min', 'maj', 'maj']
+        'notes': [2, 3, 5, 7, 8, 10],
+        'chords': ['min', 'dim', 'maj', 'min', 'min', 'maj', 'maj'],
+
+        'modes': {}
     },
 
-    'harmonic_min': {
-        "notes": [2, 3, 5, 7, 8, 11],
-        "chords": ['min', 'dim', 'aug', 'min', 'maj', 'maj', 'dim']
+    'harmonic minor': {
+        'notes': [2, 3, 5, 7, 8, 11],
+        'chords': ['min', 'dim', 'aug', 'min', 'maj', 'maj', 'dim'],
+
+        'modes': {
+            1: {
+                'name': 'Harmonic Minor',
+                'aliases': []
+            },
+
+            2: {
+                'name': 'Locrian Natural 6',
+                'aliases': []
+            },
+
+            3: {
+                'name': 'Phrygian Dominant',
+                'aliases': [
+                    'Spanish Gypsy',
+                    'Freygish'
+                ]
+            },
+
+            4: {
+                'name': 'Dorian #4',
+                'aliases': []
+            },
+
+            5: {
+                'name': 'Mixolydian b2',
+                'aliases': []
+            },
+
+            6: {
+                'name': 'Lydian #2',
+                'aliases': []
+            },
+
+            7: {
+                'name': 'Super Locrian bb7',
+                'aliases': []
+            }
+        }
     },
 
-    'melodic_min': {
-        "notes": [2, 3, 5, 7, 9, 11],
-        "chords": ['min', 'min', 'aug', 'maj', 'maj', 'dim', 'dim']
-    },
+    'melodic minor': {
+        'notes': [2, 3, 5, 7, 9, 11],
+        'chords': ['min', 'min', 'aug', 'maj', 'maj', 'dim', 'dim'],
 
-    #The greek modes
+        'modes': {
+            1: {
+                'name': 'Melodic Minor',
+                'aliases': ['Jazz Minor']
+            },
 
-    'ionian': {
-        "notes": [2, 4, 5, 7, 9, 11],
-        "chords": ['maj', 'min', 'min', 'maj', 'maj', 'min', 'dim']
-    },
+            2: {
+                'name': 'Dorian b2',
+                'aliases': ['Phrygian Natural 6']
+            },
 
-    'dorian': {
-        "notes": [2, 3, 5, 7, 9, 10],
-        "chords": ['min', 'min', 'maj', 'min', 'min', 'dim', 'dom']
-    },
+            3: {
+                'name': 'Lydian Augmented',
+                'aliases': []
+            },
 
-    'phrygian': {
-        "notes": [1, 3, 5, 7, 8, 10],
-        "chords": ['min', 'maj', 'maj', 'min', 'dim', 'maj', 'min']
-    },
+            4: {
+                'name': 'Lydian Dominant',
+                'aliases': ['Acoustic Scale']
+            },
 
-    'lydian': {
-        "notes": [2, 4, 6, 7, 9, 11],
-        "chords": ['maj', 'maj', 'min', 'dim', 'maj', 'min', 'min']
-    },
+            5: {
+                'name': 'Mixolydian b6',
+                'aliases': []
+            },
 
-    'mixolydian': {
-        "notes": [2, 4, 5, 7, 9, 10],
-        "chords": ['maj', 'min', 'dim', 'maj', 'min', 'min', 'maj']
-    },
+            6: {
+                'name': 'Locrian Natural 2',
+                'aliases': ['Half-Diminished Scale']
+            },
 
-    'aeolian': {
-        "notes": [2, 3, 5, 7, 8, 10],
-        "chords": ['min', 'dim', 'maj', 'min', 'min', 'maj', 'maj']
-    },
-
-    'locrian': {
-        "notes": [1, 3, 5, 6, 8, 10],
-        "chords": ['dim', 'maj', 'min', 'min', 'maj', 'maj', 'min']
-    },
-
-    #Pentatonic Scales
-
-    'pentatonic_maj': {
-        "notes": [2, 4, 7, 9],
-        "chords": ['','','','','','',]
-    },
-
-    'pentatonic_min': {
-        "notes": [3, 5, 7, 10],
-        "chords": ['','','','','',]
-    },
-
-    'blues': {
-        "notes": [3, 5, 6, 7, 10],
-        "chords": ['','','','','','',]
+            7: {
+                'name': 'Super Locrian',
+                'aliases': ['Altered Scale']
+            }
+        }
     }
 }
