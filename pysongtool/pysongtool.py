@@ -209,7 +209,7 @@ class PySongTool:
             except:
                 raise WrongNote(args[i])
 
-            d = abs(0 - note['index'])
+            d = abs(root_info['index'] - note['index'])
 
             note_and_intervals.append(
                 {
